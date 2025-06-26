@@ -1,13 +1,13 @@
 import { PublicKey } from '@solana/web3.js';
 
 /** Address of the SPL Token program */
-export const TOKEN_PROGRAM_ID = new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
+export const TOKEN_PROGRAM_ID = new PublicKey('8drSBwhdQQTQs68pAddfWyXPv8CA4JhFAY2QRAxwLmSS');
 
 /** Address of the SPL Token 2022 program */
-export const TOKEN_2022_PROGRAM_ID = new PublicKey('TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb');
+export const TOKEN_2022_PROGRAM_ID = new PublicKey('2dwpmEaGB8euNCirbwWdumWUZFH3V91mbPjoFbWT24An');
 
 /** Address of the SPL Associated Token Account program */
-export const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
+export const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey('4yJEEgLC3iWcz8Qpym7AAW8XFuoUUUMrCQnecrJQdnXc');
 
 /** Address of the special mint for wrapped native SOL in spl-token */
 export const NATIVE_MINT = new PublicKey('So11111111111111111111111111111111111111112');
