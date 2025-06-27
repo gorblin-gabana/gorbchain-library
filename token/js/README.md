@@ -1,10 +1,10 @@
-# `@solana/spl-token`
+# `@gorbchain-xyz/token`
 
-A TypeScript library for interacting with the SPL Token and Token-2022 programs.
+A TypeScript library for interacting with the Gorbchain Token and Token-2022 programs.
 
 ## Links
 
-- [TypeScript Docs](https://solana-labs.github.io/solana-program-library/token/js/)
+- [TypeScript Docs](https://gorbchain.xyz/docs/token/js/)
 - [FAQs (Frequently Asked Questions)](#faqs)
 - [Install](#install)
 - [Build from Source](#build-from-source)
@@ -13,10 +13,10 @@ A TypeScript library for interacting with the SPL Token and Token-2022 programs.
 
 ### How can I get support?
 
-Please ask questions in the Solana Stack Exchange: https://solana.stackexchange.com/
+Please ask questions in the Gorbchain Stack Exchange: https://stackexchange.gorbchain.xyz/
 
 If you've found a bug or you'd like to request a feature, please
-[open an issue](https://github.com/solana-labs/solana-program-library/issues/new).
+[open an issue](https://github.com/gorblin-gabana/gorbchain-library/issues/new).
 
 ### No export named Token
 
@@ -25,11 +25,11 @@ Please see [upgrading from 0.1.x](#upgrading-from-01x).
 ## Install
 
 ```shell
-npm install --save @solana/spl-token @solana/web3.js
+npm install --save @gorbchain-xyz/token @gorbchain-xyz/web3.js
 ```
 _OR_
 ```shell
-yarn add @solana/spl-token @solana/web3.js
+yarn add @gorbchain-xyz/token @gorbchain-xyz/web3.js
 ```
 
 ## Build from Source
@@ -43,12 +43,12 @@ If you have Node 16+, you can [activate PNPM with Corepack](https://pnpm.io/inst
 
 1. Clone the project:
 ```shell
-git clone https://github.com/solana-labs/solana-program-library.git
+git clone https://github.com/gorblin-gabana/gorbchain-library.git
 ```
 
 2. Navigate to the root of the repository:
 ```shell
-cd solana-program-library
+cd gorbchain-library
 ```
 
 3. Install the dependencies:
@@ -61,7 +61,7 @@ pnpm install
 pnpm run build
 ```
 
-5. Navigate to the SPL Token library:
+5. Navigate to the Token library:
 ```shell
 cd token/js
 ```
@@ -86,8 +86,8 @@ pnpm run example
 This library does not use hardcoded program addresses. You must set the program addresses at runtime before using any functionality:
 
 ```typescript
-import { setTokenProgramConfig } from '@solana/spl-token';
-import { PublicKey } from '@solana/web3.js';
+import { setTokenProgramConfig } from '@gorbchain-xyz/token';
+import { PublicKey } from '@gorbchain-xyz/web3.js';
 
 setTokenProgramConfig({
   TOKEN_PROGRAM_ID: new PublicKey('...'),
@@ -111,20 +111,20 @@ There are no breaking changes from 0.2.0, only new functionality for Token-2022.
 When upgrading from spl-token 0.1.x, you may see the following error in your code:
 
 ```
-import {TOKEN_PROGRAM_ID, Token, AccountLayout} from '@solana/spl-token';
+import {TOKEN_PROGRAM_ID, Token, AccountLayout} from '@gorbchain-xyz/token';
                           ^^^^^
-SyntaxError: The requested module '@solana/spl-token' does not provide an export named 'Token'
+SyntaxError: The requested module '@gorbchain-xyz/token' does not provide an export named 'Token'
 ```
 
-The `@solana/spl-token` library as of version 0.2.0 does not have the `Token`
+The `@gorbchain-xyz/token` library as of version 0.2.0 does not have the `Token`
 class. Instead the actions are split up and exported separately.
 
 To use the old version, install it with:
 
 ```
-npm install @solana/spl-token@0.1.8
+npm install @gorbchain-xyz/token@0.1.8
 ```
 
 Otherwise you can find documentation on how to use new versions on the
-[SPL docs](https://spl.solana.com/token) or
-[Solana Cookbook](https://solanacookbook.com/references/token.html).
+[Gorbchain docs](https://gorbchain.xyz/docs/token) or
+[Gorbchain Cookbook](https://cookbook.gorbchain.xyz/references/token.html).

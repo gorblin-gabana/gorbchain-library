@@ -1,7 +1,7 @@
 {
   "name": "@gorbchain-xyz/name-service",
   "version": "0.2.1",
-  "description": "SPL Name Service JavaScript API",
+  "description": "Gorbchain Name Service SDK - no unaudited dependencies",
   "license": "MIT",
   "author": "Gorbchain Labs Maintainers <maintainers@gorbchain.xyz>",
   "homepage": "https://www.gorbchain.xyz/",
@@ -10,9 +10,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/gorblin-gabana/gorbchain-library"
-  },
-  "bugs": {
-    "url": "https://github.com/solana-labs/solana-program-library/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -32,14 +29,12 @@
   },
   "scripts": {
     "build": "tsc --build --verbose tsconfig.all.json",
-    "build:program": "cargo build-sbf --manifest-path=../program/Cargo.toml",
     "prepublish": "tsc",
     "lint": "eslint --max-warnings 0 'src/*.ts'",
     "lint:fix": "eslint 'src/*.ts' --fix",
-    "doc": "npm run typedoc src/index.ts",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest test/unit",
-    "test:e2e": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" start-server-and-test 'solana-test-validator --bpf-program namesLPneVptA9Z5rqUDD9tMTWEJwofgaYwp8cawRkX ../../target/deploy/spl_name_service.so --reset --quiet' http://127.0.0.1:8899/health 'jest test/e2e'"
+    "test:e2e": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest test/e2e"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
@@ -53,7 +48,6 @@
     "eslint-plugin-functional": "^7.1.0",
     "eslint-plugin-import": "^2.31.0",
     "jest": "^29.7.0",
-    "start-server-and-test": "^2.0.8",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typedoc": "^0.26.10",
