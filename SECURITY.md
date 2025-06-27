@@ -26,7 +26,7 @@ security issue in this email. **Only provide such details in the advisory**.
 
 If you do not receive a response from security@solana.com please followup with
 the team directly. You can do this in the `#core-technology` channel of the
-[Solana Tech discord server](https://solana.com/discord), by pinging the admins
+[Solana Tech discord server](https://www.gorbchain.xyzdiscord), by pinging the admins
 in the channel and referencing the fact that you submitted a security problem.
 
 

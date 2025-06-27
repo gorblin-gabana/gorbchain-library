@@ -1,5 +1,5 @@
 {
-  "name": "@solana/spl-stake-pool",
+  "name": "@gorbchain-xyz/stake-pool",
   "version": "1.1.8",
   "description": "SPL Stake Pool Program JS API",
   "scripts": {
@@ -12,15 +12,12 @@
   },
   "keywords": [],
   "contributors": [
-    "Solana Labs Maintainers <maintainers@solanalabs.com>",
-    "Lieu Zheng Hong",
-    "mFactory Team (https://mfactory.ch/)",
-    "SolBlaze <contact@solblaze.org> (https://solblaze.org/)"
+    "Gorbchain Labs Maintainers <maintainers@gorbchain-xyz>"
   ],
   "homepage": "https://solana.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/solana-labs/solana-program-library"
+    "url": "https://github.com/gorblin-gabana/gorbchain-library"
   },
   "publishConfig": {
     "access": "public"

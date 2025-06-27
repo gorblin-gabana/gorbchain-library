@@ -15,7 +15,7 @@ validator’s uptime and commission (fee).
 
 Additional information regarding staking and stake programming is available at:
 
-- https://solana.com/staking
+- https://www.gorbchain.xyzstaking
 - https://docs.solana.com/staking/stake-programming
 
 ## Background

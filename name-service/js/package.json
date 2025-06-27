@@ -1,15 +1,15 @@
 {
-  "name": "@solana/spl-name-service",
+  "name": "@gorbchain-xyz/name-service",
   "version": "0.2.1",
   "description": "SPL Name Service JavaScript API",
   "license": "MIT",
-  "author": "Solana Labs Maintainers <maintainers@solanalabs.com>",
-  "homepage": "https://solana.com/",
+  "author": "Gorbchain Labs Maintainers <maintainers@gorbchain.xyz>",
+  "homepage": "https://www.gorbchain.xyz/",
   "type": "module",
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/solana-labs/solana-program-library"
+    "url": "https://github.com/gorblin-gabana/gorbchain-library"
   },
   "bugs": {
     "url": "https://github.com/solana-labs/solana-program-library/issues"
@@ -26,9 +26,9 @@
   "module": "lib/esm/index.js",
   "types": "lib/types/index.d.ts",
   "exports": {
-    "types": "lib/types/index.d.ts",
-    "require": "lib/cjs/index.js",
-    "import": "lib/esm/index.js"
+    "types": "./lib/types/index.d.ts",
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.js"
   },
   "scripts": {
     "build": "tsc --build --verbose tsconfig.all.json",

@@ -1,5 +1,5 @@
 {
-  "name": "managed-token",
+  "name": "@gorbchain-xyz/managed-token",
   "version": "1.0.0",
   "description": "SDK for managed-token",
   "main": "index.ts",
@@ -8,5 +8,10 @@
     "@metaplex-foundation/rustbin": "^0.3.1",
     "@metaplex-foundation/solita": "^0.12.2",
     "@solana/spl-token": "0.1.8"
+  },
+  "author": "Gorbchain Labs Maintainers <maintainers@gorbchain-xyz>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gorblin-gabana/gorbchain-library"
   }
 }

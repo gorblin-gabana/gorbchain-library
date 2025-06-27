@@ -1,8 +1,8 @@
 {
-    "name": "@gorbchain-xyz/spl-token",
+    "name": "@gorbchain-xyz/token",
     "description": "SPL Token Program JS API",
     "version": "0.4.9",
-    "author": "Gorblin for Gorbchain and Solana Labs Maintainers",
+    "author": "Gorbchain Labs Maintainers <maintainers@gorbchain-xyz>",
     "repository": "https://github.com/gorblin-gabana/gorbchain-library",
     "license": "Apache-2.0",
     "type": "module",

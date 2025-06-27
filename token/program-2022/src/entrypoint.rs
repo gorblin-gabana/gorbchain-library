@@ -27,7 +27,7 @@ security_txt! {
     // Required fields
     name: "SPL Token-2022",
     project_url: "https://spl.solana.com/token-2022",
-    contacts: "link:https://github.com/solana-labs/solana-program-library/security/advisories/new,mailto:security@solana.com,discord:https://solana.com/discord",
+    contacts: "link:https://github.com/solana-labs/solana-program-library/security/advisories/new,mailto:security@solana.com,discord:https://www.gorbchain.xyzdiscord",
     policy: "https://github.com/solana-labs/solana-program-library/blob/master/SECURITY.md",
 
     // Optional Fields

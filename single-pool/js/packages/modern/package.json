@@ -1,5 +1,5 @@
 {
-  "name": "@solana/spl-single-pool",
+  "name": "@gorbchain-xyz/single-pool",
   "version": "1.0.0",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
@@ -25,5 +25,10 @@
     "@solana/addresses": "2.0.0-rc.1",
     "@solana/instructions": "2.0.0-rc.1",
     "@solana/transaction-messages": "2.0.0-rc.1"
+  },
+  "author": "Gorbchain Labs Maintainers <maintainers@gorbchain-xyz>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gorblin-gabana/gorbchain-library"
   }
 }

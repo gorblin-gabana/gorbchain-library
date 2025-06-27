@@ -1,14 +1,14 @@
 {
-  "name": "@solana/spl-token-swap",
+  "name": "@gorbchain-xyz/token-swap",
   "version": "0.4.4",
   "description": "SPL Token Swap JavaScript API",
   "license": "MIT",
   "type": "module",
-  "author": "Solana Labs Maintainers <maintainers@solanalabs.com>",
-  "homepage": "https://solana.com/",
+  "author": "Gorbchain Labs Maintainers <maintainers@gorbchain-xyz>",
+  "homepage": "https://www.gorbchain.xyz",
   "repository": {
     "type": "git",
-    "url": "https://github.com/solana-labs/solana-program-library"
+    "url": "https://github.com/gorblin-gabana/gorbchain-library"
   },
   "bugs": {
     "url": "https://github.com/solana-labs/solana-program-library/issues"

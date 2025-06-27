@@ -1,9 +1,9 @@
 {
-    "name": "@solana/spl-token-metadata",
+    "name": "@gorbchain-xyz/token-metadata",
     "description": "SPL Token Metadata Interface JS API",
     "version": "0.1.6",
-    "author": "Solana Labs Maintainers <maintainers@solanalabs.com>",
-    "repository": "https://github.com/solana-labs/solana-program-library",
+    "author": "Gorbchain Labs Maintainers <maintainers@gorbchain-xyz>",
+    "repository": "https://github.com/gorblin-gabana/gorbchain-library",
     "license": "Apache-2.0",
     "type": "module",
     "sideEffects": false,

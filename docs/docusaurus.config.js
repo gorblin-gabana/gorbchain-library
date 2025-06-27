@@ -21,7 +21,7 @@ module.exports = {
           position: "left",
         },
         {
-          href: "https://solana.com/discord",
+          href: "https://www.gorbchain.xyzdiscord",
           label: "Chat",
           position: "right",
         },
@@ -41,7 +41,7 @@ module.exports = {
           items: [
             {
               label: "Discord",
-              href: "https://solana.com/discord",
+              href: "https://www.gorbchain.xyzdiscord",
             },
             {
               label: "Twitter",
