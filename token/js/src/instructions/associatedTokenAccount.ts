@@ -1,6 +1,6 @@
 import type { PublicKey } from '@solana/web3.js';
 import { SystemProgram, TransactionInstruction } from '@solana/web3.js';
-import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from '../constants.js';
+import { getTokenProgramConfig } from '../constants.js';
 import { getAssociatedTokenAddressSync } from '../state/mint.js';
 
 /**
@@ -20,8 +20,8 @@ export function createAssociatedTokenAccountInstruction(
     associatedToken: PublicKey,
     owner: PublicKey,
     mint: PublicKey,
-    programId = TOKEN_PROGRAM_ID,
-    associatedTokenProgramId = ASSOCIATED_TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
+    associatedTokenProgramId = getTokenProgramConfig().ASSOCIATED_TOKEN_PROGRAM_ID,
 ): TransactionInstruction {
     return buildAssociatedTokenAccountInstruction(
         payer,
@@ -51,8 +51,8 @@ export function createAssociatedTokenAccountIdempotentInstruction(
     associatedToken: PublicKey,
     owner: PublicKey,
     mint: PublicKey,
-    programId = TOKEN_PROGRAM_ID,
-    associatedTokenProgramId = ASSOCIATED_TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
+    associatedTokenProgramId = getTokenProgramConfig().ASSOCIATED_TOKEN_PROGRAM_ID,
 ): TransactionInstruction {
     return buildAssociatedTokenAccountInstruction(
         payer,
@@ -82,8 +82,8 @@ export function createAssociatedTokenAccountIdempotentInstructionWithDerivation(
     owner: PublicKey,
     mint: PublicKey,
     allowOwnerOffCurve = true,
-    programId = TOKEN_PROGRAM_ID,
-    associatedTokenProgramId = ASSOCIATED_TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
+    associatedTokenProgramId = getTokenProgramConfig().ASSOCIATED_TOKEN_PROGRAM_ID,
 ) {
     const associatedToken = getAssociatedTokenAddressSync(mint, owner, allowOwnerOffCurve);
 
@@ -103,8 +103,8 @@ function buildAssociatedTokenAccountInstruction(
     owner: PublicKey,
     mint: PublicKey,
     instructionData: Buffer,
-    programId = TOKEN_PROGRAM_ID,
-    associatedTokenProgramId = ASSOCIATED_TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
+    associatedTokenProgramId = getTokenProgramConfig().ASSOCIATED_TOKEN_PROGRAM_ID,
 ): TransactionInstruction {
     const keys = [
         { pubkey: payer, isSigner: true, isWritable: true },
@@ -143,8 +143,8 @@ export function createRecoverNestedInstruction(
     ownerAssociatedToken: PublicKey,
     ownerMint: PublicKey,
     owner: PublicKey,
-    programId = TOKEN_PROGRAM_ID,
-    associatedTokenProgramId = ASSOCIATED_TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
+    associatedTokenProgramId = getTokenProgramConfig().ASSOCIATED_TOKEN_PROGRAM_ID,
 ): TransactionInstruction {
     const keys = [
         { pubkey: nestedAssociatedToken, isSigner: false, isWritable: true },

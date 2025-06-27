@@ -1,7 +1,7 @@
 import { seq, struct, u16, u8 } from '@solana/buffer-layout';
 import type { PublicKey, Signer } from '@solana/web3.js';
 import { SystemProgram, TransactionInstruction } from '@solana/web3.js';
-import { programSupportsExtensions, TOKEN_2022_PROGRAM_ID } from '../constants.js';
+import { programSupportsExtensions, getTokenProgramConfig } from '../constants.js';
 import { TokenUnsupportedInstructionError } from '../errors.js';
 import type { ExtensionType } from '../extensions/extensionType.js';
 import { addSigners } from './internal.js';
@@ -31,7 +31,7 @@ export function createReallocateInstruction(
     extensionTypes: ExtensionType[],
     owner: PublicKey,
     multiSigners: (Signer | PublicKey)[] = [],
-    programId = TOKEN_2022_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_2022_PROGRAM_ID,
 ): TransactionInstruction {
     if (!programSupportsExtensions(programId)) {
         throw new TokenUnsupportedInstructionError();

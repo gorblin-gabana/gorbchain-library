@@ -2,7 +2,7 @@ import { struct, u32, u8 } from '@solana/buffer-layout';
 import { bool, publicKey, u64 } from '@solana/buffer-layout-utils';
 import type { AccountInfo, Commitment, Connection } from '@solana/web3.js';
 import { PublicKey } from '@solana/web3.js';
-import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from '../constants.js';
+import { getTokenProgramConfig } from '../constants.js';
 import {
     TokenAccountNotFoundError,
     TokenInvalidAccountOwnerError,
@@ -76,7 +76,7 @@ export async function getMint(
     connection: Connection,
     address: PublicKey,
     commitment?: Commitment,
-    programId = TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
 ): Promise<Mint> {
     const info = await connection.getAccountInfo(address, commitment);
     return unpackMint(address, info, programId);
@@ -91,7 +91,7 @@ export async function getMint(
  *
  * @return Unpacked mint
  */
-export function unpackMint(address: PublicKey, info: AccountInfo<Buffer> | null, programId = TOKEN_PROGRAM_ID): Mint {
+export function unpackMint(address: PublicKey, info: AccountInfo<Buffer> | null, programId = getTokenProgramConfig().TOKEN_PROGRAM_ID): Mint {
     if (!info) throw new TokenAccountNotFoundError();
     if (!info.owner.equals(programId)) throw new TokenInvalidAccountOwnerError();
     if (info.data.length < MINT_SIZE) throw new TokenInvalidAccountSizeError();
@@ -163,8 +163,8 @@ export async function getAssociatedTokenAddress(
     mint: PublicKey,
     owner: PublicKey,
     allowOwnerOffCurve = false,
-    programId = TOKEN_PROGRAM_ID,
-    associatedTokenProgramId = ASSOCIATED_TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
+    associatedTokenProgramId = getTokenProgramConfig().ASSOCIATED_TOKEN_PROGRAM_ID,
 ): Promise<PublicKey> {
     if (!allowOwnerOffCurve && !PublicKey.isOnCurve(owner.toBuffer())) throw new TokenOwnerOffCurveError();
 
@@ -191,8 +191,8 @@ export function getAssociatedTokenAddressSync(
     mint: PublicKey,
     owner: PublicKey,
     allowOwnerOffCurve = false,
-    programId = TOKEN_PROGRAM_ID,
-    associatedTokenProgramId = ASSOCIATED_TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
+    associatedTokenProgramId = getTokenProgramConfig().ASSOCIATED_TOKEN_PROGRAM_ID,
 ): PublicKey {
     if (!allowOwnerOffCurve && !PublicKey.isOnCurve(owner.toBuffer())) throw new TokenOwnerOffCurveError();
 

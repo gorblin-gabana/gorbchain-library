@@ -1,7 +1,7 @@
 import { struct, u8 } from '@solana/buffer-layout';
 import type { PublicKey, Signer } from '@solana/web3.js';
 import { TransactionInstruction } from '@solana/web3.js';
-import { programSupportsExtensions, TOKEN_2022_PROGRAM_ID } from '../../constants.js';
+import { programSupportsExtensions, getTokenProgramConfig } from '../../constants.js';
 import { TokenUnsupportedInstructionError } from '../../errors.js';
 import { addSigners } from '../../instructions/internal.js';
 import { TokenInstruction } from '../../instructions/types.js';
@@ -34,7 +34,7 @@ export function createEnableCpiGuardInstruction(
     account: PublicKey,
     authority: PublicKey,
     multiSigners: (Signer | PublicKey)[] = [],
-    programId = TOKEN_2022_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_2022_PROGRAM_ID,
 ): TransactionInstruction {
     return createCpiGuardInstruction(CpiGuardInstruction.Enable, account, authority, multiSigners, programId);
 }
@@ -53,7 +53,7 @@ export function createDisableCpiGuardInstruction(
     account: PublicKey,
     authority: PublicKey,
     multiSigners: (Signer | PublicKey)[] = [],
-    programId = TOKEN_2022_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_2022_PROGRAM_ID,
 ): TransactionInstruction {
     return createCpiGuardInstruction(CpiGuardInstruction.Disable, account, authority, multiSigners, programId);
 }

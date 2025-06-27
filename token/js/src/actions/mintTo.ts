@@ -1,6 +1,6 @@
 import type { ConfirmOptions, Connection, PublicKey, Signer, TransactionSignature } from '@solana/web3.js';
 import { sendAndConfirmTransaction, Transaction } from '@solana/web3.js';
-import { TOKEN_PROGRAM_ID } from '../constants.js';
+import { getTokenProgramConfig } from '../constants.js';
 import { createMintToInstruction } from '../instructions/mintTo.js';
 import { getSigners } from './internal.js';
 
@@ -28,7 +28,7 @@ export async function mintTo(
     amount: number | bigint,
     multiSigners: Signer[] = [],
     confirmOptions?: ConfirmOptions,
-    programId = TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
 ): Promise<TransactionSignature> {
     const [authorityPublicKey, signers] = getSigners(authority, multiSigners);
 

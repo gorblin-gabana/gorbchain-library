@@ -1,6 +1,6 @@
 import type { ConfirmOptions, Connection, Signer } from '@solana/web3.js';
 import { sendAndConfirmTransaction, Transaction } from '@solana/web3.js';
-import { NATIVE_MINT_2022, TOKEN_2022_PROGRAM_ID } from '../constants.js';
+import { getTokenProgramConfig } from '../constants.js';
 import { createCreateNativeMintInstruction } from '../instructions/createNativeMint.js';
 
 /**
@@ -16,8 +16,8 @@ export async function createNativeMint(
     connection: Connection,
     payer: Signer,
     confirmOptions?: ConfirmOptions,
-    nativeMint = NATIVE_MINT_2022,
-    programId = TOKEN_2022_PROGRAM_ID,
+    nativeMint = getTokenProgramConfig().NATIVE_MINT_2022,
+    programId = getTokenProgramConfig().TOKEN_2022_PROGRAM_ID,
 ): Promise<void> {
     const transaction = new Transaction().add(
         createCreateNativeMintInstruction(payer.publicKey, nativeMint, programId),

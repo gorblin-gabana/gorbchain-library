@@ -81,6 +81,25 @@ pnpm run test
 pnpm run example
 ```
 
+## Dynamic Program Address Configuration
+
+This library does not use hardcoded program addresses. You must set the program addresses at runtime before using any functionality:
+
+```typescript
+import { setTokenProgramConfig } from '@solana/spl-token';
+import { PublicKey } from '@solana/web3.js';
+
+setTokenProgramConfig({
+  TOKEN_PROGRAM_ID: new PublicKey('...'),
+  TOKEN_2022_PROGRAM_ID: new PublicKey('...'),
+  ASSOCIATED_TOKEN_PROGRAM_ID: new PublicKey('...'),
+  NATIVE_MINT: new PublicKey('...'),
+  NATIVE_MINT_2022: new PublicKey('...'),
+});
+```
+
+You can now use the library and it will use your provided addresses everywhere.
+
 ## Upgrading
 
 ### Upgrading from 0.2.0

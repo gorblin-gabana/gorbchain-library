@@ -1,6 +1,6 @@
 import type { ConfirmOptions, Connection, PublicKey, Signer, TransactionSignature } from '@solana/web3.js';
 import { sendAndConfirmTransaction, Transaction } from '@solana/web3.js';
-import { TOKEN_PROGRAM_ID } from '../constants.js';
+import { getTokenProgramConfig } from '../constants.js';
 import { createApproveCheckedInstruction } from '../instructions/approveChecked.js';
 import { getSigners } from './internal.js';
 
@@ -33,7 +33,7 @@ export async function approveChecked(
     decimals: number,
     multiSigners: Signer[] = [],
     confirmOptions?: ConfirmOptions,
-    programId = TOKEN_PROGRAM_ID,
+    programId = getTokenProgramConfig().TOKEN_PROGRAM_ID,
 ): Promise<TransactionSignature> {
     const [ownerPublicKey, signers] = getSigners(owner, multiSigners);
 
