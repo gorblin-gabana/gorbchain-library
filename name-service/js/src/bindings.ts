@@ -13,8 +13,24 @@ import { getHashedName, getNameAccountKey, getNameOwner, Numberu32 } from './uti
 
 ////////////////////////////////////////////////////////////
 
-export const NAME_PROGRAM_ID = new PublicKey('namesLPneVptA9Z5rqUDD9tMTWEJwofgaYwp8cawRkX');
-export const HASH_PREFIX = 'SPL Name Service';
+// Config interface and storage
+type NameServiceConfig = {
+    NAME_PROGRAM_ID: PublicKey;
+    HASH_PREFIX: string;
+};
+
+let _nameServiceConfig: NameServiceConfig = {
+    NAME_PROGRAM_ID: new PublicKey('namesLPneVptA9Z5rqUDD9tMTWEJwofgaYwp8cawRkX'),
+    HASH_PREFIX: 'SPL Name Service',
+};
+
+export function setNameServiceConfig(config: Partial<NameServiceConfig>) {
+    _nameServiceConfig = { ..._nameServiceConfig, ...config };
+}
+
+export function getNameServiceConfig(): NameServiceConfig {
+    return _nameServiceConfig;
+}
 
 ////////////////////////////////////////////////////////////
 /**
@@ -52,7 +68,7 @@ export async function createNameRegistry(
     }
 
     const createNameInstr = createInstruction(
-        NAME_PROGRAM_ID,
+        getNameServiceConfig().NAME_PROGRAM_ID,
         SystemProgram.programId,
         nameAccountKey,
         nameOwner,
@@ -97,7 +113,7 @@ export async function updateNameRegistryData(
     }
 
     const updateInstr = updateInstruction(
-        NAME_PROGRAM_ID,
+        getNameServiceConfig().NAME_PROGRAM_ID,
         nameAccountKey,
         new Numberu32(offset),
         input_data,
@@ -137,7 +153,7 @@ export async function transferNameOwnership(
     }
 
     const transferInstr = transferInstruction(
-        NAME_PROGRAM_ID,
+        getNameServiceConfig().NAME_PROGRAM_ID,
         nameAccountKey,
         newOwner,
         curentNameOwner,
@@ -175,7 +191,7 @@ export async function deleteNameRegistry(
         nameOwner = (await NameRegistryState.retrieve(connection, nameAccountKey)).owner;
     }
 
-    const changeAuthoritiesInstr = deleteInstruction(NAME_PROGRAM_ID, nameAccountKey, refundTargetKey, nameOwner);
+    const changeAuthoritiesInstr = deleteInstruction(getNameServiceConfig().NAME_PROGRAM_ID, nameAccountKey, refundTargetKey, nameOwner);
 
     return changeAuthoritiesInstr;
 }
@@ -210,7 +226,7 @@ export async function reallocNameAccount(
     }
 
     const reallocInstr = reallocInstruction(
-        NAME_PROGRAM_ID,
+        getNameServiceConfig().NAME_PROGRAM_ID,
         SystemProgram.programId,
         payerKey,
         nameAccountKey,

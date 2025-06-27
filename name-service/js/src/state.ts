@@ -14,13 +14,19 @@ export class NameRegistryState {
     class: PublicKey;
     data: Buffer | undefined;
 
-    static schema: Schema = {
-        struct: {
-            parentName: { array: { type: 'u8', len: 32 } },
-            owner: { array: { type: 'u8', len: 32 } },
-            class: { array: { type: 'u8', len: 32 } },
-        },
-    };
+    static schema: Map<Function, any> = new Map([
+        [
+            NameRegistryState,
+            {
+                kind: 'struct',
+                fields: [
+                    ['parentName', [32]],
+                    ['owner', [32]],
+                    ['class', [32]],
+                ],
+            },
+        ],
+    ]);
     constructor(obj: InitArgs) {
         this.parentName = new PublicKey(obj.parentName);
         this.owner = new PublicKey(obj.owner);
@@ -32,12 +38,13 @@ export class NameRegistryState {
         if (!nameAccount) {
             throw new Error('Invalid name account provided');
         }
-
-        const deserialized = deserialize(this.schema, nameAccount.data) as InitArgs;
+        const deserialized = deserialize(
+            NameRegistryState.schema,
+            NameRegistryState,
+            nameAccount.data.slice(0, NameRegistryState.HEADER_LEN),
+        ) as unknown as InitArgs;
         const res = new NameRegistryState(deserialized);
-
         res.data = nameAccount.data?.slice(this.HEADER_LEN);
-
         return res;
     }
 }

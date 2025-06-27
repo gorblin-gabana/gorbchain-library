@@ -12,7 +12,7 @@ import {
 } from '@solana/web3.js';
 import BN from 'bn.js';
 
-import { HASH_PREFIX, NAME_PROGRAM_ID } from './bindings';
+import { getNameServiceConfig } from './bindings';
 import { NameRegistryState } from './state';
 
 export class Numberu32 extends BN {
@@ -94,7 +94,7 @@ export const signAndSendTransactionInstructions = async (
 };
 
 export async function getHashedName(name: string): Promise<Buffer> {
-    const input = HASH_PREFIX + name;
+    const input = getNameServiceConfig().HASH_PREFIX + name;
     const buffer = createHash('sha256').update(input, 'utf8').digest();
     return buffer;
 }
@@ -115,7 +115,7 @@ export async function getNameAccountKey(
     } else {
         seeds.push(Buffer.alloc(32));
     }
-    const [nameAccountKey] = await PublicKey.findProgramAddress(seeds, NAME_PROGRAM_ID);
+    const [nameAccountKey] = await PublicKey.findProgramAddress(seeds, getNameServiceConfig().NAME_PROGRAM_ID);
     return nameAccountKey;
 }
 
