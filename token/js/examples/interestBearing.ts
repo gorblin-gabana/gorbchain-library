@@ -1,5 +1,5 @@
 import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { createInterestBearingMint, updateRateInterestBearingMint, TOKEN_2022_PROGRAM_ID } from '../src';
+import { createInterestBearingMint, updateRateInterestBearingMint, initialise, TOKEN_2022_PROGRAM_ID } from '../src';
 
 (async () => {
     const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
@@ -26,6 +26,12 @@ import { createInterestBearingMint, updateRateInterestBearingMint, TOKEN_2022_PR
         undefined,
         TOKEN_2022_PROGRAM_ID,
     );
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 
     const updateRate = 50;
     await updateRateInterestBearingMint(

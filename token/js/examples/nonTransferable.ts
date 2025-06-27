@@ -13,6 +13,7 @@ import {
     getMintLen,
     ExtensionType,
     TOKEN_2022_PROGRAM_ID,
+    initialise,
 } from '../src';
 
 (async () => {
@@ -42,4 +43,10 @@ import {
         createInitializeMintInstruction(mint, decimals, mintAuthority.publicKey, null, TOKEN_2022_PROGRAM_ID),
     );
     await sendAndConfirmTransaction(connection, transaction, [payer, mintKeypair], undefined);
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 })();

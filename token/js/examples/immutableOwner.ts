@@ -15,6 +15,7 @@ import {
     getAccountLen,
     ExtensionType,
     TOKEN_2022_PROGRAM_ID,
+    initialise,
 } from '../src';
 
 (async () => {
@@ -55,6 +56,12 @@ import {
         createInitializeAccountInstruction(account, mint, owner.publicKey, TOKEN_2022_PROGRAM_ID),
     );
     await sendAndConfirmTransaction(connection, transaction, [payer, accountKeypair], undefined);
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 
     // create associated token account
     await createAccount(connection, payer, mint, owner.publicKey, undefined, undefined, TOKEN_2022_PROGRAM_ID);

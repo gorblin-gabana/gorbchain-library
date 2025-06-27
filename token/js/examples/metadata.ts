@@ -23,6 +23,7 @@ import {
     createUpdateFieldInstruction,
     createRemoveKeyInstruction,
 } from '@solana/spl-token-metadata';
+import { initialise } from '../src/tokenFunctions.js';
 
 (async () => {
     const payer = Keypair.generate();
@@ -106,4 +107,10 @@ import {
     );
     const sig = await sendAndConfirmTransaction(connection, mintTransaction, [payer, mint]);
     console.log('Signature:', sig);
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 })();

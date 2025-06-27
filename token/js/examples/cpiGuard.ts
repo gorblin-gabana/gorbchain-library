@@ -1,4 +1,8 @@
 import {
+  createMint,
+  initialise,
+} from '../src/tokenFunctions.js';
+import {
     clusterApiUrl,
     sendAndConfirmTransaction,
     Connection,
@@ -8,7 +12,6 @@ import {
     LAMPORTS_PER_SOL,
 } from '@solana/web3.js';
 import {
-    createMint,
     createEnableCpiGuardInstruction,
     createInitializeAccountInstruction,
     disableCpiGuard,
@@ -20,6 +23,12 @@ import {
 
 (async () => {
     const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 
     const payer = Keypair.generate();
     const airdropSignature = await connection.requestAirdrop(payer.publicKey, 2 * LAMPORTS_PER_SOL);

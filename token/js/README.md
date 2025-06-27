@@ -128,3 +128,59 @@ npm install @gorbchain-xyz/token@0.1.8
 Otherwise you can find documentation on how to use new versions on the
 [Gorbchain docs](https://gorbchain.xyz/docs/token) or
 [Gorbchain Cookbook](https://cookbook.gorbchain.xyz/references/token.html).
+
+# Usage Guide for Token Functions
+
+## Installation
+
+```sh
+npm install --save @gorbchain-xyz/token @gorbchain-xyz/web3.js
+```
+
+## Importing and Initializing
+
+```typescript
+import {
+  createMint,
+  getOrCreateAssociatedTokenAccount,
+  mintTo,
+  transfer,
+  initialise,
+} from '@gorbchain-xyz/token';
+import { PublicKey, Keypair, Connection, clusterApiUrl } from '@solana/web3.js';
+
+// Example: Set up your token addresses (replace with your actual addresses)
+const addresses = initialise({
+  USDC: 'So11111111111111111111111111111111111111112',
+  USDT: 'So11111111111111111111111111111111111111113',
+});
+
+// Now you can use addresses.USDC, addresses.USDT, etc.
+```
+
+## Example: Create Mint, Token Accounts, Mint Tokens, and Transfer
+
+```typescript
+const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+const payer = Keypair.generate();
+const mintAuthority = payer;
+const recipient = Keypair.generate();
+
+// Create a new mint
+const mint = await createMint(connection, payer, mintAuthority.publicKey, null, 9);
+
+// Create or get associated token accounts
+const fromTokenAccount = await getOrCreateAssociatedTokenAccount(connection, payer, mint, payer.publicKey);
+const toTokenAccount = await getOrCreateAssociatedTokenAccount(connection, payer, mint, recipient.publicKey);
+
+// Mint tokens
+await mintTo(connection, payer, mint, fromTokenAccount.address, mintAuthority.publicKey, 1000000000);
+
+// Transfer tokens
+await transfer(connection, payer, fromTokenAccount.address, toTokenAccount.address, payer.publicKey, 1000000000);
+```
+
+## Notes
+- You can pass any token, ATA, or SPL Token addresses to the functions; they are not hardcoded.
+- Use the `initialise` function to convert your addresses to `PublicKey` objects for convenience.
+- See the `examples/` folder for more advanced usage, including transfer hooks and custom extensions.

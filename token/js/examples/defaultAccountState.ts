@@ -15,6 +15,7 @@ import {
     updateDefaultAccountState,
     ExtensionType,
     TOKEN_2022_PROGRAM_ID,
+    initialise,
 } from '../src';
 
 (async () => {
@@ -67,4 +68,10 @@ import {
         undefined,
         TOKEN_2022_PROGRAM_ID,
     );
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 })();

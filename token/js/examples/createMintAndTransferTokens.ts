@@ -1,58 +1,60 @@
-import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { createMint, getOrCreateAssociatedTokenAccount, mintTo, transfer } from '../src'; // @FIXME: replace with @solana/spl-token
+import {
+  createMint,
+  getOrCreateAssociatedTokenAccount,
+  mintTo,
+  transfer,
+  initialise,
+} from '../src/tokenFunctions.js';
+import { Connection, Keypair, clusterApiUrl } from '@solana/web3.js';
 
 (async () => {
     // Connect to cluster
     const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 
-    // Generate a new wallet keypair and airdrop SOL
+    // Generate wallets
     const fromWallet = Keypair.generate();
-    const fromAirdropSignature = await connection.requestAirdrop(fromWallet.publicKey, LAMPORTS_PER_SOL);
-
-    // Wait for airdrop confirmation
-    await connection.confirmTransaction({
-        signature: fromAirdropSignature,
-        ...(await connection.getLatestBlockhash()),
-    });
-
-    // Generate a new wallet to receive newly minted token
     const toWallet = Keypair.generate();
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 
     // Create new token mint
     const mint = await createMint(connection, fromWallet, fromWallet.publicKey, null, 9);
 
-    // Get the token account of the fromWallet address, and if it does not exist, create it
+    // Get or create token accounts
     const fromTokenAccount = await getOrCreateAssociatedTokenAccount(
         connection,
         fromWallet,
         mint,
         fromWallet.publicKey,
     );
+    const toTokenAccount = await getOrCreateAssociatedTokenAccount(
+        connection,
+        fromWallet,
+        mint,
+        toWallet.publicKey,
+    );
 
-    // Get the token account of the toWallet address, and if it does not exist, create it
-    const toTokenAccount = await getOrCreateAssociatedTokenAccount(connection, fromWallet, mint, toWallet.publicKey);
-
-    // Mint 1 new token to the "fromTokenAccount" account we just created
-    let signature = await mintTo(
+    // Mint tokens
+    await mintTo(
         connection,
         fromWallet,
         mint,
         fromTokenAccount.address,
         fromWallet.publicKey,
         1000000000,
-        [],
     );
-    console.log('mint tx:', signature);
 
-    // Transfer the new token to the "toTokenAccount" we just created
-    signature = await transfer(
+    // Transfer tokens
+    await transfer(
         connection,
         fromWallet,
         fromTokenAccount.address,
         toTokenAccount.address,
         fromWallet.publicKey,
         1000000000,
-        [],
     );
-    console.log('transfer tx:', signature);
 })();

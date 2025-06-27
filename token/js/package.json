@@ -1,7 +1,7 @@
 {
     "name": "@gorbchain-xyz/token",
     "description": "Gabana Token Program JS API",
-    "version": "0.4.9",
+    "version": "0.4.91",
     "author": "Gorbchain Labs Maintainers <maintainers@gorbchain-xyz>",
     "repository": "https://github.com/gorblin-gabana/gorbchain-library",
     "license": "Apache-2.0",

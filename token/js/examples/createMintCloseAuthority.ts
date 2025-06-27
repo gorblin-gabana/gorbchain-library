@@ -6,6 +6,7 @@ import {
     ExtensionType,
     TOKEN_2022_PROGRAM_ID,
 } from '../src';
+import { initialise } from '../src/tokenFunctions.js';
 import {
     clusterApiUrl,
     sendAndConfirmTransaction,
@@ -54,6 +55,12 @@ import {
     await sendAndConfirmTransaction(connection, transaction, [payer, mintKeypair], undefined);
 
     console.log(mint.toBase58());
+
+    // Initialise token addresses (replace with your actual addresses if needed)
+    const addresses = initialise({
+        USDC: 'So11111111111111111111111111111111111111112',
+        USDT: 'So11111111111111111111111111111111111111113',
+    });
 
     await closeAccount(connection, payer, mint, payer.publicKey, closeAuthority, [], undefined, TOKEN_2022_PROGRAM_ID);
 })();
