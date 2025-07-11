@@ -25,7 +25,7 @@ at the
 To create a new mint with confidential transfers enabled, run:
 
 ```console
-$ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token --enable-confidential-transfers auto
+$ spl-token --program-id G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6 create-token --enable-confidential-transfers auto
 ```
 
 The `auto` keyword means that any token user can permissionlessly configure their

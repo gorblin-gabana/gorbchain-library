@@ -12,8 +12,8 @@ export const SYSVAR_STAKE_HISTORY_ID = address('SysvarStakeHistory11111111111111
 export const STAKE_CONFIG_ID = address('StakeConfig11111111111111111111111111111111');
 export const STAKE_ACCOUNT_SIZE = 200n;
 
-export const TOKEN_PROGRAM_ID = address('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
-export const ATOKEN_PROGRAM_ID = address('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
+export const TOKEN_PROGRAM_ID = address('Gorbj8Dp27NkXMQUkeHBSmpf6iQ3yT4b2uVe8kM4s6br');
+export const ATOKEN_PROGRAM_ID = address('GoATGVNeSXerFerPqTJ8hcED1msPWHHLxao2vwBYqowm');
 export const MINT_SIZE = 82n;
 
 export function u32(n: number): Uint8Array {

@@ -34,8 +34,8 @@ You'll need some Token-2022 tokens for testing. First, create a mint with an
 extension. We'll use the "Mint Close Authority" extension:
 
 ```console
-$ spl-token -ul create-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb --enable-close
-Creating token E5SUrbnx7bMBp3bRdMWNCFS3FXp5VpvFDdNFp8rjrMLM under program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb
+$ spl-token -ul create-token --program-id G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6 --enable-close
+Creating token E5SUrbnx7bMBp3bRdMWNCFS3FXp5VpvFDdNFp8rjrMLM under program G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6
 
 Address:  E5SUrbnx7bMBp3bRdMWNCFS3FXp5VpvFDdNFp8rjrMLM
 Decimals:  9
@@ -114,10 +114,10 @@ For Token-2022, you simply need to add one more call to get the additional accou
 import { Connection, PublicKey } from '@solana/web3.js';
 
 const TOKEN_PROGRAM_ID = new PublicKey(
-  'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
+  'Gorbj8Dp27NkXMQUkeHBSmpf6iQ3yT4b2uVe8kM4s6br'
 );
 const TOKEN_2022_PROGRAM_ID = new PublicKey(
-  'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb'
+  'G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6'
 );
 const walletPublicKey = new PublicKey('11111111111111111111111111111111'); // insert your key
 const connection = new Connection('http://127.0.0.1:8899', 'confirmed');
@@ -158,10 +158,10 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { createTransferInstruction } from '@solana/spl-token';
 
 const TOKEN_PROGRAM_ID = new PublicKey(
-  'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
+  'Gorbj8Dp27NkXMQUkeHBSmpf6iQ3yT4b2uVe8kM4s6br'
 );
 const TOKEN_2022_PROGRAM_ID = new PublicKey(
-  'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb'
+  'G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6'
 );
 const walletPublicKey = new PublicKey('11111111111111111111111111111111'); // insert your key
 const connection = new Connection('http://127.0.0.1:8899', 'confirmed');
@@ -221,7 +221,7 @@ Instead, you must add the program id as a parameter:
 import { PublicKey } from '@solana/web3.js';
 
 const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey(
-  "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+  "GoATGVNeSXerFerPqTJ8hcED1msPWHHLxao2vwBYqowm"
 );
 
 function associatedTokenAccountAddress(
@@ -244,7 +244,7 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { createAssociatedTokenAccountInstruction } from '@solana/spl-token';
 
 const tokenProgramId = new PublicKey(
-  'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb'
+  'G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6'
 ); // either `Tokenz...` or `Tokenkeg...`
 const wallet = new PublicKey('11111111111111111111111111111111'); // insert your key
 const mint = new PublicKey('11111111111111111111111111111111'); // insert mint key

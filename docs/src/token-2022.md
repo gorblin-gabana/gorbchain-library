@@ -10,7 +10,7 @@ functionality provided by the [Token Program](token.mdx).
 
 | Information | Account Address |
 | --- | --- |
-| Token-2022 Program | `TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb` |
+| Token-2022 Program | `G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6` |
 
 ## Motivation
 

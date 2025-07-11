@@ -634,7 +634,7 @@ pub fn app<'a>(
                 .takes_value(false)
                 .global(true)
                 .conflicts_with("program_id")
-                .help("Use token extension program token 2022 with program id: TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"),
+                .help("Use token extension program token 2022 with program id: G22oYgZ6LnVcy7v8eSNi2xpNk1NcZiPD8CVKSTut7oZ6"),
         )
         .arg(
             Arg::with_name("program_id")

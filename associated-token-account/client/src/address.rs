@@ -19,7 +19,7 @@ pub fn get_associated_token_address_and_bump_seed(
 }
 
 mod inline_spl_token {
-    solana_program::declare_id!("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
+    solana_program::declare_id!("Gorbj8Dp27NkXMQUkeHBSmpf6iQ3yT4b2uVe8kM4s6br");
 }
 
 /// Derives the associated token account address for the given wallet address
